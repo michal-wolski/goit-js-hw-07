@@ -6,8 +6,6 @@ console.log(galleryItems);
 
 const galleryBox = document.querySelector("div.gallery");
 
-console.log(galleryItems);
-
 for (const el of galleryItems) {
   const galleryItem = document.createElement("div");
   galleryItem.classList.add("gallery__item");
@@ -29,8 +27,12 @@ for (const el of galleryItems) {
 galleryBox.addEventListener("click", ev => {
     event.preventDefault();
     const instance = basicLightbox.create(`
-<img src=${event.target.dataset.source} width="1280">
-`)
+<img src=${event.target.dataset.source} width="800" height="600">
+`, {onShow: (instance) => {document.addEventListener('keydown', function(event){
+	if(event.key === "Escape"){
+		instance.close()
+	}
+});}})
 
 instance.show()
 })
