@@ -19,5 +19,7 @@ for (const el of galleryItems) {
   galleryBox.append(galleryLink);
   galleryLink.append(galleryImage);
 };
-var lightbox = new SimpleLightbox('.gallery a', { /* options */ });
-console.log(lightbox.captionsData)
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
